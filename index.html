@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CC-Liverys | Premium Assetto Corsa Customizing</title>
     
+    <!-- Discord / Social Media Embed Meta Tags -->
+    <meta property="og:title" content="CC-Liverys | Premium Assetto Corsa Customizing">
+    <meta property="og:description" content="Custom & Clean Assetto Corsa Designs. Feinstes Customizing und höchste Detailtreue für deine Fahrzeuge. Jetzt anfragen!">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1543358646753427566/1543358647097368716/image.png?ex=6a953cff&is=6a93eb7f&hm=a623c4fc164233d14e057faa9fb381b84489ba44f2a84da695f1beb41e00edb9&=&format=webp&quality=lossless&width=1536&height=864">
+    <meta name="theme-color" content="#e63946">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
     <style>
@@ -26,9 +33,26 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-red); }
 
+        /* --- STICKY NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
+            display: flex; justify-content: center; gap: 40px;
+        }
+        nav a {
+            color: var(--text-main); text-decoration: none; font-family: 'Montserrat', sans-serif;
+            font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover { color: var(--accent-red); }
+
         /* --- HERO SEKTION --- */
         .hero {
-            position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
             background: linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,1) 100%), url('https://media.discordapp.net/attachments/1543358646753427566/1543358647097368716/image.png?ex=6a953cff&is=6a93eb7f&hm=a623c4fc164233d14e057faa9fb381b84489ba44f2a84da695f1beb41e00edb9&=&format=webp&quality=lossless&width=1536&height=864');
             background-size: cover; background-position: center; background-attachment: fixed; padding: 0 20px;
         }
@@ -43,16 +67,15 @@
         .hero-btn:hover { background: var(--accent-red); box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-3px); }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 80px 20px; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header { text-align: center; margin-bottom: 60px; padding-top: 50px; }
         .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; text-transform: uppercase; position: relative; display: inline-block; }
         .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent-red); }
 
-        /* --- ÜBER MICH --- */
-        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 80px; }
+        /* --- ÜBER MICH & ABLAUF --- */
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 50px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 80px; scroll-margin-top: 80px;}
         .glass-panel h3 { font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 20px; color: var(--accent-red); }
         .glass-panel p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
 
-        /* --- ABLAUF (How it works) --- */
         .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .step-card { text-align: center; padding: 30px 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px; transition: transform 0.3s ease; }
         .step-card:hover { transform: translateY(-5px); border-color: var(--accent-red); }
@@ -69,15 +92,14 @@
         .gallery-item:hover .gallery-overlay { transform: translateY(0); }
         .gallery-overlay h4 { font-family: 'Montserrat', sans-serif; color: var(--accent-red); }
         
-        /* Lightbox Container */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; backdrop-filter: blur(5px); }
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: pointer; backdrop-filter: blur(5px); }
         #lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; border: 2px solid var(--accent-red); box-shadow: 0 0 40px var(--accent-glow); }
         #lightbox span { position: absolute; top: 20px; right: 40px; font-size: 3rem; color: #fff; font-weight: bold; }
 
         /* --- PREISE --- */
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 80px; }
         .price-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 40px; text-align: center; transition: all 0.4s ease; }
-        .price-card.popular { border-color: var(--accent-red); transform: translateY(-10px); }
+        .price-card.popular { border-color: var(--accent-red); box-shadow: 0 10px 30px rgba(230, 57, 70, 0.15); }
         .price-card:hover { transform: translateY(-10px); border-color: var(--accent-red); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
         .price-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; }
         .price-card .price { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: var(--accent-red); font-weight: 900; margin: 20px 0; }
@@ -95,8 +117,8 @@
         .rules-box ul li { color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem; display: flex; }
         .rules-box ul li::before { content: '⚠️'; margin-right: 15px; }
 
-        /* --- BESTELLFORMULAR (Formspree) --- */
-        .form-container { max-width: 800px; margin: 0 auto; }
+        /* --- BESTELLFORMULAR --- */
+        .form-container { max-width: 800px; margin: 0 auto; scroll-margin-top: 80px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; font-family: 'Montserrat', sans-serif; margin-bottom: 10px; }
         
@@ -118,15 +140,39 @@
         .submit-btn:hover:not(:disabled) { background: #c92a38; box-shadow: 0 0 20px var(--accent-glow); }
         .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* Formspree Success Message */
         [data-fs-success] { display: none; background: rgba(40, 167, 69, 0.1); border: 1px solid #28a745; color: #28a745; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; font-weight: bold; }
         [data-fs-error] { color: var(--accent-red); font-size: 0.9rem; margin-top: 5px; }
 
+        /* --- SCROLL ANIMATIONEN (Fade-In) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
-        @media (max-width: 900px) { .info-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { 
+            .info-grid { grid-template-columns: 1fr; } 
+            nav { gap: 15px; } 
+            nav a { font-size: 0.75rem; } 
+            .hero h1 { font-size: 3.5rem; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- STICKY NAVBAR -->
+    <nav>
+        <a href="#about">Ablauf</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#preise">Preise</a>
+        <a href="#faq">FAQ</a>
+        <a href="#bestellen">Anfrage</a>
+    </nav>
 
     <section class="hero">
         <div class="hero-content">
@@ -138,8 +184,8 @@
 
     <div class="container">
         
-        <!-- ÜBER MICH -->
-        <section class="glass-panel" id="about">
+        <!-- ÜBER MICH (mit Animation) -->
+        <section class="glass-panel reveal" id="about">
             <h3>Auge fürs Detail.</h3>
             <p>Ich konzentriere mich voll und ganz auf das, was im modernen Sim-Racing wirklich zählt: saubere und hochpräzise <strong>Assetto Corsa Liveries</strong>. Keine Neuentwicklungen von Null, sondern feinstes Customizing bestehender Designs nach exaktem Kundenwunsch.</p>
             
@@ -169,41 +215,41 @@
         </section>
 
         <!-- SHOWCASE GALERIE -->
-        <div class="section-header"><h2>Showcase</h2></div>
+        <div class="section-header reveal" id="showcase"><h2>Showcase</h2></div>
         <section class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)">
+            <div class="gallery-item reveal" onclick="openLightbox(this)">
                 <img src="https://media.discordapp.net/attachments/1543358646753427566/1543358647097368716/image.png?ex=6a953cff&is=6a93eb7f&hm=a623c4fc164233d14e057faa9fb381b84489ba44f2a84da695f1beb41e00edb9&=&format=webp&quality=lossless&width=1536&height=864" alt="CC-Liverys Showcase 1">
                 <div class="gallery-overlay"><h4>Fahrzeug Customizing</h4><p>Klicke zum Vergrößern</p></div>
             </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
+            <div class="gallery-item reveal" onclick="openLightbox(this)" style="transition-delay: 0.1s;">
                 <img src="https://cdn.discordapp.com/attachments/1543358646753427566/1543358949812862992/image.png?ex=6a953d47&is=6a93ebc7&hm=81900a62a35a8f44d8192c9ef4d854c1f529d5049226872ac2c5d9aef3a0decc&" alt="California Style Kennzeichen">
                 <div class="gallery-overlay"><h4>California Style</h4><p>Klicke zum Vergrößern</p></div>
             </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
+            <div class="gallery-item reveal" onclick="openLightbox(this)" style="transition-delay: 0.2s;">
                 <img src="https://cdn.discordapp.com/attachments/1543358646753427566/1543361514319249620/image.png?ex=6a953fab&is=6a93ee2b&hm=263225a84913c950b581a5072fd037f2739414efec3145e2f59ca835b6743bad&" alt="Beta German Kennzeichen">
                 <div class="gallery-overlay"><h4>Beta German Style</h4><p>Klicke zum Vergrößern</p></div>
             </div>
         </section>
 
         <!-- PREISE -->
-        <div class="section-header"><h2>Leistungen & Preise</h2></div>
+        <div class="section-header reveal" id="preise"><h2>Leistungen & Preise</h2></div>
         <section class="pricing-grid">
-            <div class="price-card">
+            <div class="price-card reveal">
                 <h3>Basic Edit</h3><div class="price">5€ - 10€</div>
                 <ul><li>Kennzeichen einfügen</li><li>Kleine Sponsoren/Logos</li><li>Einfache Farbänderungen</li></ul>
             </div>
-            <div class="price-card popular">
+            <div class="price-card popular reveal" style="transition-delay: 0.1s;">
                 <h3>Custom Paket</h3><div class="price">15€ - 25€</div>
                 <ul><li>Komplette Sponsorenpakete</li><li>Team-Logos & Akzente</li><li>Farbkonzepte & Finetuning</li></ul>
             </div>
-            <div class="price-card">
+            <div class="price-card reveal" style="transition-delay: 0.2s;">
                 <h3>Premium Overhaul</h3><div class="price">30€ - 50€+</div>
                 <ul><li>Umfangreiche Umgestaltungen</li><li>Extreme Detailarbeit</li><li>Mehrere Varianten / Team</li></ul>
             </div>
         </section>
 
         <!-- FAQ & REGELN -->
-        <section class="info-grid">
+        <section class="info-grid reveal" id="faq">
             <div>
                 <h3 style="font-family: 'Montserrat'; margin-bottom: 20px; font-size: 1.8rem;">FAQ</h3>
                 <div class="faq-item">
@@ -212,11 +258,11 @@
                 </div>
                 <div class="faq-item">
                     <h4>Wie kann ich bezahlen?</h4>
-                    <p>Die Bezahlung erfolgt ausschließlich über PayPal (Waren & Dienstleistungen oder Familie & Freunde nach Absprache).</p>
+                    <p>Die Bezahlung erfolgt ausschließlich über PayPal.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Bekomme ich die Photoshop (PSD) Dateien?</h4>
-                    <p>Standardmäßig erhältst du nur die finalen Ingame-Dateien für Assetto Corsa (.dds). Offene Projektdateien werden nicht herausgegeben.</p>
+                    <p>Standardmäßig erhältst du nur die finalen Ingame-Dateien für Assetto Corsa (.dds).</p>
                 </div>
             </div>
             
@@ -224,24 +270,20 @@
                 <h3 style="font-family: 'Montserrat'; margin-bottom: 10px; font-size: 1.5rem;">Wichtige Regeln (AGB)</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Bitte lies dir diese Hinweise vor einer Anfrage durch:</p>
                 <ul>
-                    <li><strong>Korrekturschleifen:</strong> 2 kleine Anpassungen (z.B. Logo leicht verschieben) sind im Preis inklusive. Jede weitere, aufwendige Änderung kostet extra.</li>
-                    <li><strong>Sicherheit:</strong> Screenshots während der Arbeit werden mit einem dezenten Wasserzeichen versehen.</li>
-                    <li><strong>Bezahlung:</strong> Die finalen Dateien werden erst nach vollständigem Zahlungseingang versendet. Bei großen Aufträgen behalte ich mir vor, eine kleine Anzahlung zu verlangen.</li>
+                    <li><strong>Korrekturschleifen:</strong> 2 kleine Anpassungen sind im Preis inklusive. Jede weitere kostet extra.</li>
+                    <li><strong>Sicherheit:</strong> Screenshots während der Arbeit werden mit einem Wasserzeichen versehen.</li>
+                    <li><strong>Bezahlung:</strong> Die finalen Dateien werden erst nach vollständigem Zahlungseingang versendet.</li>
                 </ul>
             </div>
         </section>
 
         <!-- KAUFFORMULAR (FORMSPREE AJAX) -->
-        <section id="bestellen" class="glass-panel form-container">
+        <section id="bestellen" class="glass-panel form-container reveal">
             <div class="section-header" style="margin-bottom: 30px;"><h2>Bestellanfrage</h2></div>
             
-            <!-- Erfolgsmeldung -->
-            <div data-fs-success>
-                ✓ Deine Anfrage wurde erfolgreich gesendet! Ich werde mich schnellstmöglich per E-Mail bei dir melden.
-            </div>
+            <div data-fs-success>✓ Deine Anfrage wurde erfolgreich gesendet! Ich werde mich schnellstmöglich per E-Mail bei dir melden.</div>
 
             <form id="orderForm">
-                <!-- Versteckte Felder für Formspree (werden durch JS befüllt) -->
                 <input type="hidden" name="Ausgewählte_Produkte" id="hiddenProducts" value="">
                 <input type="hidden" name="Geschätzter_Preis" id="hiddenPrice" value="">
 
@@ -270,7 +312,7 @@
 
                 <div class="form-group">
                     <label for="desc">Beschreibung deiner Wünsche:</label>
-                    <textarea id="desc" name="Beschreibung" rows="5" required data-fs-field placeholder="Beispiel: Deutsches Kennzeichen (B-XX 123), Redbull Sticker an den Türen..."></textarea>
+                    <textarea id="desc" name="Beschreibung" rows="5" required data-fs-field placeholder="Beispiel: Deutsches Kennzeichen (B-XX 123)..."></textarea>
                     <span data-fs-error="Beschreibung"></span>
                 </div>
 
@@ -281,7 +323,6 @@
                 </div>
 
                 <button type="submit" class="submit-btn" data-fs-submit-btn>-- Bestätigen und Abschicken --</button>
-                <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 15px;">Dies ist noch keine offizielle Bestellung. Alles bezüglich Geld und Dateien folgt per E-Mail.</p>
             </form>
         </section>
     </div>
@@ -296,19 +337,17 @@
         <img id="lightbox-img" src="" alt="Großansicht">
     </div>
 
-    <!-- SKRIPTE FÜR LIGHTBOX & FORMSPREE -->
+    <!-- SKRIPTE -->
     <script>
-        // --- Lightbox Funktion ---
+        // Lightbox
         function openLightbox(element) {
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('lightbox').style.display = 'flex';
         }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
-        // --- Live-Preisberechnung für Formspree ---
+        // Live-Preis
         document.addEventListener('DOMContentLoaded', () => {
             const checkboxes = document.querySelectorAll('.product-cb');
             const priceDisplay = document.getElementById('priceDisplay');
@@ -316,9 +355,7 @@
             const hiddenPrice = document.getElementById('hiddenPrice');
 
             function updateFormValues() {
-                let minTotal = 0;
-                let maxTotal = 0;
-                let hasRange = false;
+                let minTotal = 0, maxTotal = 0, hasRange = false;
                 let selectedNames = [];
 
                 checkboxes.forEach(cb => {
@@ -329,23 +366,30 @@
                         if (cb.getAttribute('data-min') !== cb.value) { hasRange = true; }
                     }
                 });
-
-                // Setze Anzeige
-                let finalPriceString = "0";
-                if (maxTotal > 0) {
-                    finalPriceString = hasRange ? (minTotal + " - " + maxTotal) : maxTotal;
-                }
+                let finalPriceString = maxTotal > 0 ? (hasRange ? (minTotal + " - " + maxTotal) : maxTotal) : "0";
                 priceDisplay.textContent = finalPriceString;
-
-                // Fülle versteckte Formspree Felder
                 hiddenProducts.value = selectedNames.join(", ");
                 hiddenPrice.value = finalPriceString + " €";
             }
-
             checkboxes.forEach(cb => cb.addEventListener('change', updateFormValues));
+
+            // Scroll Animation (Fade-In)
+            function reveal() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 100;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
+                    }
+                }
+            }
+            window.addEventListener("scroll", reveal);
+            reveal(); // Trigger on page load
         });
 
-        // --- Formspree Ajax Initialisierung ---
+        // Formspree Init
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#orderForm', formId: 'mppzqwqg' });
     </script>
