@@ -1,1 +1,247 @@
-.
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC-Liverys | Custom & Clean Assetto Corsa Designs</title>
+    <style>
+        /* Grundlegendes Design & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f0f11;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #1a1a1e 0%, #0f0f11 100%);
+            border-bottom: 2px solid #ff3333; /* Roter Racing-Akzent */
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        header h1 span {
+            color: #ff3333;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container für den Inhalt */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Sektionen */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 4px solid #ff3333;
+            padding-left: 15px;
+        }
+
+        .text-box {
+            background-color: #1a1a1e;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* Galerie / Showcase */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-item {
+            background-color: #1a1a1e;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 2px solid #2a2a2e;
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: #d0d0d0;
+        }
+
+        /* Preisliste */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .price-card {
+            background-color: #1a1a1e;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2a2a2e;
+            transition: border-color 0.3s ease;
+        }
+
+        .price-card:hover {
+            border-color: #ff3333;
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price-card .price {
+            font-size: 2rem;
+            color: #ff3333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            text-align: left;
+            color: #a0a0a0;
+        }
+
+        .price-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .price-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff3333;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #0a0a0c;
+            color: #606060;
+            border-top: 1px solid #1a1a1e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CC-<span>Liverys</span></h1>
+        <p>Custom & Clean Assetto Corsa Designs. Detailliert. Maßgeschneidert. Hochwertig.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Über mich -->
+        <div class="text-box">
+            <h2 class="section-title">Über CC-Liverys</h2>
+            <p>Moin! Ich bin der Kopf hinter <strong>CC-Liverys</strong>. Ich konzentriere mich voll und ganz auf das, was im Sim-Racing wirklich zählt: saubere und präzise <strong>Assetto Corsa Liveries</strong>. Ich baue keine Designs von Null auf, sondern verfeinere, personalisiere und passe bestehende Liveries exakt nach deinen Wünschen an.</p>
+            <br>
+            <p>Bei meiner Arbeit liegt der Fokus auf dem <strong>Auge fürs Detail</strong>. Egal ob perfekt ausgerichtete Kennzeichen, saubere Sponsoren-Logos oder farbliche Feinabstimmungen – hier gibt es keine billige Massenware, sondern echtes Handwerk.</p>
+        </div>
+
+        <!-- Showcase / Galerie -->
+        <h2 class="section-title">Showcase & Details</h2>
+        <div class="gallery">
+            <!-- Bild 1 -->
+            <div class="gallery-item">
+                <img src="https://media.discordapp.net/attachments/1543358646753427566/1543358647097368716/image.png?ex=6a953cff&is=6a93eb7f&hm=a623c4fc164233d14e057faa9fb381b84489ba44f2a84da695f1beb41e00edb9&=&format=webp&quality=lossless&width=1536&height=864" alt="CC-Liverys Showcase 1">
+                <div class="gallery-caption">Custom Design & Feinabstimmung</div>
+            </div>
+            <!-- Bild 2 (California) -->
+            <div class="gallery-item">
+                <img src="https://cdn.discordapp.com/attachments/1543358646753427566/1543358949812862992/image.png?ex=6a953d47&is=6a93ebc7&hm=81900a62a35a8f44d8192c9ef4d854c1f529d5049226872ac2c5d9aef3a0decc&" alt="California Style Kennzeichen">
+                <div class="gallery-caption">Kennzeichen (California Style)</div>
+            </div>
+            <!-- Bild 3 (Beta German) -->
+            <div class="gallery-item">
+                <img src="https://cdn.discordapp.com/attachments/1543358646753427566/1543361514319249620/image.png?ex=6a953fab&is=6a93ee2b&hm=263225a84913c950b581a5072fd037f2739414efec3145e2f59ca835b6743bad&" alt="Beta German Kennzeichen">
+                <div class="gallery-caption">Kennzeichen (Beta German)</div>
+            </div>
+        </div>
+
+        <!-- Preisliste -->
+        <h2 class="section-title">Preise & Leistungen</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Kleine Anpassungen</h3>
+                <div class="price">5€ - 10€</div>
+                <ul>
+                    <li>Kennzeichen einfügen</li>
+                    <li>Kleine Sponsoren/Logos</li>
+                    <li>Simple Farbänderungen</li>
+                    <li>Startnummern anpassen</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Mittleres Customizing</h3>
+                <div class="price">15€ - 25€</div>
+                <ul>
+                    <li>Komplette Sponsorenpakete</li>
+                    <li>Team-Logos platzieren</li>
+                    <li>Individuelle Namenszüge</li>
+                    <li>Farbkonzepte anpassen</li>
+                </ul>
+            </div>
+            <div class="price-card">
+                <h3>Große Bearbeitung</h3>
+                <div class="price">30€ - 50€+</div>
+                <ul>
+                    <li>Umfangreiche Umgestaltungen</li>
+                    <li>Aufwendige Detailarbeit</li>
+                    <li>Mehrere Varianten (z.B. Team-Autos)</li>
+                    <li>Auf Basis bestehender Vorlagen</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CC-Liverys. Custom & Clean. Alle Rechte vorbehalten.</p>
+        <!-- Platzhalter für Kontakt -->
+        <p style="margin-top: 10px; color: #ff3333;">Kontakt per Discord (Link folgt in Kürze)</p>
+    </footer>
+
+</body>
+</html>
