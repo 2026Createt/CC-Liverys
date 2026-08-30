@@ -33,22 +33,31 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-red); }
 
-        /* --- STICKY NAVIGATION --- */
+        /* --- STICKY NAVIGATION (mit Zähler) --- */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
             background: rgba(5, 5, 5, 0.75);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 15px 0;
-            display: flex; justify-content: center; gap: 40px;
+            padding: 15px 40px;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
         }
-        nav a {
+        
+        .nav-links {
+            display: flex; 
+            gap: 40px;
+        }
+        
+        .nav-links a {
             color: var(--text-main); text-decoration: none; font-family: 'Montserrat', sans-serif;
             font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
             transition: color 0.3s ease;
         }
-        nav a:hover { color: var(--accent-red); }
+        
+        .nav-links a:hover { color: var(--accent-red); }
 
         /* --- HERO SEKTION --- */
         .hero {
@@ -154,11 +163,12 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 900px) { 
             .info-grid { grid-template-columns: 1fr; } 
-            nav { gap: 15px; } 
-            nav a { font-size: 0.75rem; } 
+            nav { flex-direction: column; gap: 15px; padding: 15px; } 
+            .nav-links { gap: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { font-size: 0.75rem; } 
             .hero h1 { font-size: 3.5rem; }
         }
     </style>
@@ -167,11 +177,19 @@
 
     <!-- STICKY NAVBAR -->
     <nav>
-        <a href="#about">Ablauf</a>
-        <a href="#showcase">Showcase</a>
-        <a href="#preise">Preise</a>
-        <a href="#faq">FAQ</a>
-        <a href="#bestellen">Anfrage</a>
+        <!-- Besucherzähler Links -->
+        <div class="nav-counter" title="Einmalige Besucher">
+            <img src="https://hits.sh/deine-domain-hier.de.svg?style=for-the-badge&label=Besucher&color=e63946" alt="Besucherzähler">
+        </div>
+
+        <!-- Links Rechts -->
+        <div class="nav-links">
+            <a href="#about">Ablauf</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#preise">Preise</a>
+            <a href="#faq">FAQ</a>
+            <a href="#bestellen">Anfrage</a>
+        </div>
     </nav>
 
     <section class="hero">
