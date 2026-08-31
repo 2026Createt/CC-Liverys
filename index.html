@@ -33,7 +33,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-red); }
 
-        /* --- STICKY NAVIGATION (mit Zähler) --- */
+        /* --- STICKY NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
@@ -58,6 +58,33 @@
         }
         
         .nav-links a:hover { color: var(--accent-red); }
+
+        /* --- CUSTOM BADGE COUNTER --- */
+        .custom-badge {
+            display: inline-flex;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            overflow: hidden;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        .badge-label {
+            background-color: #333;
+            color: #fff;
+            padding: 6px 10px;
+        }
+        
+        .badge-count {
+            background-color: var(--accent-red);
+            color: #fff;
+            padding: 6px 10px;
+            min-width: 30px;
+            text-align: center;
+        }
 
         /* --- HERO SEKTION --- */
         .hero {
@@ -177,9 +204,12 @@
 
     <!-- STICKY NAVBAR -->
     <nav>
-        <!-- Besucherzähler Links -->
+        <!-- Besucherzähler Link mit neuem Badge -->
         <div class="nav-counter" title="Einmalige Besucher">
-            <img src="https://hits.sh/deine-domain-hier.de.svg?style=for-the-badge&label=Besucher&color=e63946" alt="Besucherzähler">
+            <div class="custom-badge">
+                <span class="badge-label">Besucher</span>
+                <span class="badge-count" id="visitorCount">...</span>
+            </div>
         </div>
 
         <!-- Links Rechts -->
@@ -410,6 +440,35 @@
         // Formspree Init
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#orderForm', formId: 'mppzqwqg' });
+
+        // --- BESUCHERZÄHLER LOGIK ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const namespace = "ccliverys-website-v1";
+            const key = "visits";
+            const countDisplay = document.getElementById("visitorCount");
+
+            async function fetchCount(increment) {
+                const endpoint = increment
+                    ? `https://api.counterapi.dev/v1/${namespace}/${key}/up`
+                    : `https://api.counterapi.dev/v1/${namespace}/${key}`;
+
+                try {
+                    const response = await fetch(endpoint);
+                    const data = await response.json();
+                    countDisplay.textContent = data.count;
+                } catch (error) {
+                    countDisplay.textContent = "-";
+                    console.error("Fehler beim Laden des Zählers:", error);
+                }
+            }
+
+            if (!localStorage.getItem("hasVisitedCCLiverys")) {
+                localStorage.setItem("hasVisitedCCLiverys", "true");
+                fetchCount(true);
+            } else {
+                fetchCount(false);
+            }
+        });
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
