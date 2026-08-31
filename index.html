@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CC-Liverys | Premium Assetto Corsa Customizing</title>
     
+    <!-- SEO & Standard Meta Tags -->
+    <meta name="description" content="Custom & Clean Assetto Corsa Designs. Feinstes Customizing und höchste Detailtreue für deine Fahrzeuge. Basic Edits bis Premium Overhauls.">
+    <meta name="theme-color" content="#e63946">
+
     <!-- Discord / Social Media Embed Meta Tags -->
     <meta property="og:title" content="CC-Liverys | Premium Assetto Corsa Customizing">
     <meta property="og:description" content="Custom & Clean Assetto Corsa Designs. Feinstes Customizing und höchste Detailtreue für deine Fahrzeuge. Jetzt anfragen!">
     <meta property="og:image" content="https://media.discordapp.net/attachments/1543358646753427566/1543358647097368716/image.png?ex=6a953cff&is=6a93eb7f&hm=a623c4fc164233d14e057faa9fb381b84489ba44f2a84da695f1beb41e00edb9&=&format=webp&quality=lossless&width=1536&height=864">
-    <meta name="theme-color" content="#e63946">
     <meta property="og:type" content="website">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -37,7 +40,7 @@
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 5, 0.75);
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
             padding: 15px 40px;
@@ -59,6 +62,25 @@
         
         .nav-links a:hover { color: var(--accent-red); }
 
+        /* --- HAMBURGER MENÜ (MOBILE) --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: var(--text-main);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--accent-red); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--accent-red); }
+
         /* --- CUSTOM BADGE COUNTER --- */
         .custom-badge {
             display: inline-flex;
@@ -71,20 +93,8 @@
             text-transform: uppercase;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-        
-        .badge-label {
-            background-color: #333;
-            color: #fff;
-            padding: 6px 10px;
-        }
-        
-        .badge-count {
-            background-color: var(--accent-red);
-            color: #fff;
-            padding: 6px 10px;
-            min-width: 30px;
-            text-align: center;
-        }
+        .badge-label { background-color: #333; color: #fff; padding: 6px 10px; }
+        .badge-count { background-color: var(--accent-red); color: #fff; padding: 6px 10px; min-width: 30px; text-align: center; }
 
         /* --- HERO SEKTION --- */
         .hero {
@@ -180,23 +190,32 @@
         [data-fs-error] { color: var(--accent-red); font-size: 0.9rem; margin-top: 5px; }
 
         /* --- SCROLL ANIMATIONEN (Fade-In) --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Responsive Design */
+        /* --- RESPONSIVE DESIGN & MOBILE MENU --- */
         @media (max-width: 900px) { 
             .info-grid { grid-template-columns: 1fr; } 
-            nav { flex-direction: column; gap: 15px; padding: 15px; } 
-            .nav-links { gap: 15px; display: flex; flex-wrap: wrap; justify-content: center; }
-            .nav-links a { font-size: 0.75rem; } 
             .hero h1 { font-size: 3.5rem; }
+            nav { padding: 15px 20px; }
+            
+            /* Mobile Navbar Logic */
+            .hamburger { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background: rgba(5, 5, 5, 0.98);
+                flex-direction: column;
+                padding: 0;
+                border-bottom: 1px solid var(--glass-border);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Hidden */
+                transition: clip-path 0.4s ease-in-out;
+            }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+                padding: 20px 0;
+            }
+            .nav-links a { font-size: 1rem; padding: 10px 0; width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -204,7 +223,6 @@
 
     <!-- STICKY NAVBAR -->
     <nav>
-        <!-- Besucherzähler Link mit neuem Badge -->
         <div class="nav-counter" title="Einmalige Besucher">
             <div class="custom-badge">
                 <span class="badge-label">Besucher</span>
@@ -212,10 +230,18 @@
             </div>
         </div>
 
-        <!-- Links Rechts -->
-        <div class="nav-links">
+        <!-- Hamburger Icon (Mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Links -->
+        <div class="nav-links" id="navLinks">
             <a href="#about">Ablauf</a>
             <a href="#showcase">Showcase</a>
+            <a href="#reviews">Kundenstimmen</a>
             <a href="#preise">Preise</a>
             <a href="#faq">FAQ</a>
             <a href="#bestellen">Anfrage</a>
@@ -232,7 +258,7 @@
 
     <div class="container">
         
-        <!-- ÜBER MICH (mit Animation) -->
+        <!-- ÜBER MICH -->
         <section class="glass-panel reveal" id="about">
             <h3>Auge fürs Detail.</h3>
             <p>Ich konzentriere mich voll und ganz auf das, was im modernen Sim-Racing wirklich zählt: saubere und hochpräzise <strong>Assetto Corsa Liveries</strong>. Keine Neuentwicklungen von Null, sondern feinstes Customizing bestehender Designs nach exaktem Kundenwunsch.</p>
@@ -276,6 +302,22 @@
             <div class="gallery-item reveal" onclick="openLightbox(this)" style="transition-delay: 0.2s;">
                 <img src="https://cdn.discordapp.com/attachments/1543358646753427566/1543361514319249620/image.png?ex=6a953fab&is=6a93ee2b&hm=263225a84913c950b581a5072fd037f2739414efec3145e2f59ca835b6743bad&" alt="Beta German Kennzeichen">
                 <div class="gallery-overlay"><h4>Beta German Style</h4><p>Klicke zum Vergrößern</p></div>
+            </div>
+        </section>
+
+        <!-- KUNDENSTIMMEN -->
+        <div class="section-header reveal" id="reviews"><h2>Kundenstimmen</h2></div>
+        <section class="glass-panel reveal" style="text-align: center; padding-bottom: 40px;">
+            <h3 style="margin-bottom: 30px;">Das sagen meine Kunden</h3>
+            <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="review-card" style="padding: 25px; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(0,0,0,0.4);">
+                    <p style="font-style: italic; color: var(--text-muted); line-height: 1.6;">"Mega Arbeit! Das Kennzeichen und die Sticker sehen 1:1 aus wie im echten Leben. Super schneller Kontakt!"</p>
+                    <h4 style="color: var(--accent-red); margin-top: 15px;">- Max M.</h4>
+                </div>
+                <div class="review-card" style="padding: 25px; border: 1px solid var(--glass-border); border-radius: 12px; background: rgba(0,0,0,0.4);">
+                    <p style="font-style: italic; color: var(--text-muted); line-height: 1.6;">"Habe ein komplettes Custom Paket für mein Team bestellt. Die Details auf der Motorhaube sind Wahnsinn."</p>
+                    <h4 style="color: var(--accent-red); margin-top: 15px;">- SimRacing Team X</h4>
+                </div>
             </div>
         </section>
 
@@ -375,8 +417,13 @@
         </section>
     </div>
 
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border);">
-        <p style="color: var(--text-muted);">&copy; 2026 CC-Liverys. Alle Rechte vorbehalten.</p>
+    <!-- RECHTLICHER FOOTER -->
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <div style="display: flex; gap: 20px;">
+            <a href="impressum.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-red)'" onmouseout="this.style.color='var(--text-muted)'">Impressum</a>
+            <a href="datenschutz.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-red)'" onmouseout="this.style.color='var(--text-muted)'">Datenschutzerklärung</a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 CC-Liverys. Alle Rechte vorbehalten.</p>
     </footer>
 
     <!-- LIGHTBOX HTML -->
@@ -387,7 +434,25 @@
 
     <!-- SKRIPTE -->
     <script>
-        // Lightbox
+        // --- MOBILE HAMBURGER MENU ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Schließt das Menü, wenn man auf einen Link klickt
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- LIGHTBOX ---
         function openLightbox(element) {
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
@@ -395,7 +460,14 @@
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
 
-        // Live-Preis
+        // NEU: Lightbox mit ESCAPE-Taste schließen
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+
+        // --- LIVE PREISBERECHNUNG ---
         document.addEventListener('DOMContentLoaded', () => {
             const checkboxes = document.querySelectorAll('.product-cb');
             const priceDisplay = document.getElementById('priceDisplay');
@@ -421,7 +493,7 @@
             }
             checkboxes.forEach(cb => cb.addEventListener('change', updateFormValues));
 
-            // Scroll Animation (Fade-In)
+            // --- SCROLL ANIMATIONEN ---
             function reveal() {
                 var reveals = document.querySelectorAll(".reveal");
                 for (var i = 0; i < reveals.length; i++) {
@@ -437,11 +509,11 @@
             reveal(); // Trigger on page load
         });
 
-        // Formspree Init
+        // --- FORMSPREE INIT ---
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#orderForm', formId: 'mppzqwqg' });
 
-        // --- BESUCHERZÄHLER LOGIK ---
+        // --- BESUCHERZÄHLER ---
         document.addEventListener("DOMContentLoaded", () => {
             const namespace = "ccliverys-website-v1";
             const key = "visits";
